@@ -1,0 +1,42 @@
+{
+  "name": "Java & GUI Codespace Environment",
+
+  "image": "mcr.microsoft.com/devcontainers/java:25",
+
+  "features": {
+    "ghcr.io/devcontainers/features/desktop-lite:1": {
+      "webPort": "6080"
+    },
+    "ghcr.io/devcontainers/features/java:1": {
+      "installMaven": true,
+      "version": "none"
+    }
+  },
+
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "vscjava.vscode-java-pack",
+        "MS-CEINTL.vscode-language-pack-ja"
+      ]
+    }
+  },
+
+  "containerEnv": {
+    "LANG": "ja_JP.UTF-8",
+    "LC_ALL": "ja_JP.UTF-8"
+  },
+
+  "onCreateCommand": "sudo apt-get update && sudo apt-get install -y locales && echo 'ja_JP.UTF-8 UTF-8' | sudo tee -a /etc/locale.gen && sudo locale-gen ja_JP.UTF-8 && sudo update-locale LANG=ja_JP.UTF-8 LC_ALL=ja_JP.UTF-8",
+
+  "postCreateCommand": "sudo apt-get install -y fonts-noto-cjk && fc-cache -fv",
+
+  "forwardPorts": [6080],
+
+  "portsAttributes": {
+    "6080": {
+      "label": "noVNC web client",
+      "onAutoForward": "notify"
+    }
+  }
+}
