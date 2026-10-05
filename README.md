@@ -4,13 +4,15 @@
 
 Java 25 LTSとMaven 3.10.0を使用します。Java 25が未導入の場合は、VS Codeのコマンドパレットから **Java: Install New JDK** を実行してJDK 25を導入してください。Mavenはリポジトリに含まれるMaven Wrapperから起動するため、別途インストールする必要はありません。
 
-Windowsのローカル環境では、最初にPowerShellで次のコマンドを実行してください。管理者権限は不要です。Maven本体と依存ライブラリのキャッシュを、日本語を含む可能性があるユーザーホームではなく、`C:\Users\Public\Documents\proglab2-cache` 配下のユーザー別フォルダへ保存します。この設定はWindowsだけに適用され、Codespacesには影響しません。
+Windowsでは、`C:\proglab2` など日本語・空白・OneDriveを含まない分かりやすい場所へcloneしてください。通常は追加設定なしで、`.\mvnw.cmd test` を実行できます。
+
+ユーザーホームの日本語パスなどが原因でMavenのビルドに失敗する場合だけ、PowerShellで次のコマンドを実行してください。管理者権限は不要です。Maven本体と依存ライブラリのキャッシュを、`C:\Users\Public\Documents\proglab2-cache` 配下のユーザー別フォルダへ移します。この設定はWindowsだけに適用され、Codespacesには影響しません。
 
 ```powershell
 powershell -NoProfile -ExecutionPolicy Bypass -File .\scripts\setup-windows.ps1
 ```
 
-プロジェクト自体も、`C:\proglab2` など日本語・空白・OneDriveを含まない場所へcloneしてください。ビルドとテストはWindowsでは `mvnw.cmd test`、Codespaces・macOS・Linuxでは `./mvnw test` で実行します。
+Codespaces・macOS・Linuxでは `./mvnw test` で実行します。
 
 ## Codespacesでの開発・提出
 
