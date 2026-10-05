@@ -1,5 +1,17 @@
 # プログラミング演習II テーマ1
 
+## 開発環境
+
+Java 25 LTSとMaven 3.10.0を使用します。Java 25が未導入の場合は、VS Codeのコマンドパレットから **Java: Install New JDK** を実行してJDK 25を導入してください。Mavenはリポジトリに含まれるMaven Wrapperから起動するため、別途インストールする必要はありません。
+
+Windowsのローカル環境では、最初にPowerShellで次のコマンドを実行してください。管理者権限は不要です。Maven本体と依存ライブラリのキャッシュを、日本語を含む可能性があるユーザーホームではなく、`C:\Users\Public\Documents\proglab2-cache` 配下のユーザー別フォルダへ保存します。この設定はWindowsだけに適用され、Codespacesには影響しません。
+
+```powershell
+powershell -NoProfile -ExecutionPolicy Bypass -File .\scripts\setup-windows.ps1
+```
+
+プロジェクト自体も、`C:\proglab2` など日本語・空白・OneDriveを含まない場所へcloneしてください。ビルドとテストはWindowsでは `mvnw.cmd test`、Codespaces・macOS・Linuxでは `./mvnw test` で実行します。
+
 ## Codespacesでの開発・提出
 
 Java 25とMavenを使います。開発環境は [hisazumi/oop-devcontainer](https://github.com/hisazumi/oop-devcontainer) の設定を使用しています。
@@ -10,7 +22,7 @@ Java 25とMavenを使います。開発環境は [hisazumi/oop-devcontainer](htt
 4. VS Codeの **ターミナル → 新しいターミナル** で、リポジトリのルート（`pom.xml` がある場所）からコンパイル・実行します。
 
 ```sh
-mvn compile
+./mvnw compile
 # FileTestは、自分で作成したmainメソッドを持つクラス名に置き換えます。
 # packageを宣言した場合は、例: jp.example.FileTest のように指定します。
 java -cp target/classes FileTest
@@ -18,7 +30,7 @@ java -cp target/classes FileTest
 
 キーボードからの入力は、実行したターミナルに入力してください。プログラムが参照するファイルやディレクトリは **Codespaces内** のものです。手元のPCのファイルは直接参照できません。相対パスは実行した場所を基準とするので、例えば `src` と入力するとリポジトリ内の `src` ディレクトリを対象にできます。出力先は探索対象の外にすると、出力ファイル自身が探索に含まれるのを避けられます。
 
-テストがある場合は `mvn test` で実行できます。ローカルで開発・採点するときもJDK 25を使用してください。この課題ではプレビュー機能は使用しません。
+テストがある場合は `./mvnw test` で実行できます。ローカルで開発・採点するときもJDK 25を使用してください。この課題ではプレビュー機能は使用しません。
 
 提出時は、VS Codeの **ソース管理** から提出するファイルをステージし、メッセージを入力して **コミット → 同期の変更（またはプッシュ）** を行います。GitHub上の自分のリポジトリで変更が反映されたことを確認してください。Codespaces内で保存しただけではGitHubに提出されません。
 
